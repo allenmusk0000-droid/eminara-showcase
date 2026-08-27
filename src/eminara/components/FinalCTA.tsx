@@ -6,13 +6,37 @@ import { scrollToId } from "../lib/smooth-scroll";
 
 function Line({ children, delay }: { children: ReactNode; delay: number }) {
   const reduce = useReducedMotion();
+  const ref = useRef<HTMLSpanElement>(null);
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -5% 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <span className="block overflow-hidden">
+    <span ref={ref} className="block overflow-hidden">
       <motion.span
         className="block"
-        initial={reduce ? { opacity: 0 } : { y: "110%", opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true, amount: 0.1, margin: "0px 0px -10% 0px" }}
+        initial={false}
+        animate={
+          shown
+            ? { y: 0, opacity: 1 }
+            : reduce
+              ? { y: 0, opacity: 0 }
+              : { y: "110%", opacity: 0 }
+        }
         transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
       >
         {children}
