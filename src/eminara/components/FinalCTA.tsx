@@ -1,17 +1,43 @@
+import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import MagneticButton from "./ui/MagneticButton";
+import BookingCalendar from "./BookingCalendar";
 import { scrollToId } from "../lib/smooth-scroll";
 
 function Line({ children, delay }: { children: ReactNode; delay: number }) {
   const reduce = useReducedMotion();
+  const ref = useRef<HTMLSpanElement>(null);
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "0px 0px -5% 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <span className="block overflow-hidden">
+    <span ref={ref} className="block overflow-hidden">
       <motion.span
         className="block"
-        initial={reduce ? { opacity: 0 } : { y: "110%" }}
-        whileInView={reduce ? { opacity: 1 } : { y: 0 }}
-        viewport={{ once: true }}
+        initial={false}
+        animate={
+          shown
+            ? { y: 0, opacity: 1 }
+            : reduce
+              ? { y: 0, opacity: 0 }
+              : { y: "110%", opacity: 0 }
+        }
         transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
       >
         {children}
@@ -72,7 +98,7 @@ export default function FinalCTA() {
           transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="mt-10 flex flex-col items-center gap-3 sm:flex-row"
         >
-          <MagneticButton href="#contact" size="lg" variant="accent" onClick={() => scrollToId("#contact")}>
+          <MagneticButton href="#booking" size="lg" variant="accent" onClick={() => scrollToId("#booking")}>
             Book a Strategy Call
             <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -81,6 +107,17 @@ export default function FinalCTA() {
           <MagneticButton href="#solutions" size="lg" variant="ghost" onClick={() => scrollToId("#solutions")}>
             Talk to Our AI
           </MagneticButton>
+        </motion.div>
+
+        <motion.div
+          id="booking"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full scroll-mt-28"
+        >
+          <BookingCalendar />
         </motion.div>
       </div>
     </section>
