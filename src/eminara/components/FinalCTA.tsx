@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import MagneticButton from "./ui/MagneticButton";
+import BookingCalendar from "./BookingCalendar";
 import { scrollToId } from "../lib/smooth-scroll";
 
 function Line({ children, delay }: { children: ReactNode; delay: number }) {
