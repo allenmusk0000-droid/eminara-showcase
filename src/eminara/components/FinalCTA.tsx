@@ -9,9 +9,9 @@ function Line({ children, delay }: { children: ReactNode; delay: number }) {
     <span className="block overflow-hidden">
       <motion.span
         className="block"
-        initial={reduce ? { opacity: 0 } : { y: "110%" }}
-        whileInView={reduce ? { opacity: 1 } : { y: 0 }}
-        viewport={{ once: true }}
+        initial={reduce ? { opacity: 0 } : { y: "110%", opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true, amount: 0.1, margin: "0px 0px -10% 0px" }}
         transition={{ duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] }}
       >
         {children}
