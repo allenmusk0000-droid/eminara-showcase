@@ -36,7 +36,7 @@ export default function Footer() {
             </p>
             <div className="mt-6 space-y-2 text-sm text-cream-dim">
               <p className="flex items-center gap-2">
-                <span className="text-accent">✉</span> hello@eminara.ai
+                <span className="text-accent">✉</span> info@eminaraai.com
               </p>
               <p className="flex items-center gap-2">
                 <span className="text-accent">☏</span> +1 (555) 000-0000
