@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import MagneticButton from "./ui/MagneticButton";
-import BookingCalendar from "./BookingCalendar";
 import { scrollToId } from "../lib/smooth-scroll";
 
 function Line({ children, delay }: { children: ReactNode; delay: number }) {
@@ -98,7 +97,7 @@ export default function FinalCTA() {
           transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="mt-10 flex flex-col items-center gap-3 sm:flex-row"
         >
-          <MagneticButton href="#booking" size="lg" variant="accent" onClick={() => scrollToId("#booking")}>
+          <MagneticButton href="https://calendly.com/akshitpundeer/30min" size="lg" variant="accent" target="_blank" rel="noopener noreferrer">
             Book a Strategy Call
             <svg className="h-4 w-4" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -107,17 +106,6 @@ export default function FinalCTA() {
           <MagneticButton href="#solutions" size="lg" variant="ghost" onClick={() => scrollToId("#solutions")}>
             Talk to Our AI
           </MagneticButton>
-        </motion.div>
-
-        <motion.div
-          id="booking"
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full scroll-mt-28"
-        >
-          <BookingCalendar />
         </motion.div>
       </div>
     </section>

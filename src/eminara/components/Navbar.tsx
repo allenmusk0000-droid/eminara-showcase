@@ -79,7 +79,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-3">
             <div className="hidden sm:block">
-              <MagneticButton href="#contact" onClick={() => go("#contact")}>
+              <MagneticButton href="https://calendly.com/akshitpundeer/30min" target="_blank" rel="noopener noreferrer">
                 Book a Call
                 <svg
                   className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5"
@@ -178,11 +178,12 @@ export default function Navbar() {
                 className="pt-8"
               >
                 <MagneticButton
-                  href="#contact"
+                  href="https://calendly.com/akshitpundeer/30min"
                   size="lg"
                   variant="accent"
                   className="w-full"
-                  onClick={() => go("#contact")}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Book a Strategy Call
                 </MagneticButton>
