@@ -63,7 +63,7 @@ export default function FinalCTA() {
         />
       </div>
 
-      <div className="container-x flex flex-col items-center text-center">
+      <div data-scroll-anchor className="container-x flex flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
