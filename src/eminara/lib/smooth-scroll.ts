@@ -20,6 +20,9 @@ export function useLenis() {
       smoothWheel: true,
       touchMultiplier: 1.6,
       wheelMultiplier: 1,
+      // Keep the scrollable height in sync as fonts/content load in,
+      // otherwise anchor scrolls near the bottom clamp too early.
+      autoResize: true,
     });
     // Expose for programmatic smooth scrolling from scrollToId
     (document as any).__lenis = lenis;
@@ -44,6 +47,12 @@ export function scrollToId(id: string) {
   const el = document.querySelector(id);
   if (!el) return;
   const lenis = (document as any).__lenis;
-  if (lenis) lenis.scrollTo(el as HTMLElement, { offset: -72 });
-  else (el as HTMLElement).scrollIntoView({ behavior: "smooth" });
+  if (lenis) {
+    // Recalculate the scroll limit first: images/fonts may have changed the
+    // page height after init, and force lets us reach targets near the end.
+    lenis.resize();
+    lenis.scrollTo(el as HTMLElement, { offset: -72, force: true });
+  } else {
+    (el as HTMLElement).scrollIntoView({ behavior: "smooth" });
+  }
 }
