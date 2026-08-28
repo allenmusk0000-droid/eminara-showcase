@@ -10,6 +10,8 @@ interface MagneticButtonProps {
   size?: "md" | "lg";
   className?: string;
   onClick?: () => void;
+  target?: string;
+  rel?: string;
 }
 
 /**
@@ -23,6 +25,8 @@ export default function MagneticButton({
   size = "md",
   className,
   onClick,
+  target,
+  rel,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
@@ -54,6 +58,8 @@ export default function MagneticButton({
     <motion.a
       ref={ref}
       href={href}
+      target={target}
+      rel={rel}
       onClick={(e) => {
         // Avoid a native hash jump when a smooth-scroll handler is provided
         if (href?.startsWith("#")) e.preventDefault();
