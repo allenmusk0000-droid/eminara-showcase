@@ -44,14 +44,18 @@ export function useLenis() {
 
 /** Smooth-scroll to an element id from anywhere (e.g. button handlers). */
 export function scrollToId(id: string) {
-  const el = document.querySelector(id);
-  if (!el) return;
+  const target = document.querySelector(id);
+  if (!target) return;
+  // Sections have large vertical padding; when a section marks an inner
+  // content anchor, scroll to that so the headline lands near the top
+  // instead of leaving a big empty gap under the navbar.
+  const el = (target.querySelector("[data-scroll-anchor]") as HTMLElement | null) ?? target;
   const lenis = (document as any).__lenis;
   if (lenis) {
     // Recalculate the scroll limit first: images/fonts may have changed the
     // page height after init, and force lets us reach targets near the end.
     lenis.resize();
-    lenis.scrollTo(el as HTMLElement, { offset: -72, force: true });
+    lenis.scrollTo(el as HTMLElement, { offset: -96, force: true });
   } else {
     (el as HTMLElement).scrollIntoView({ behavior: "smooth" });
   }
