@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import MagneticButton from "./ui/MagneticButton";
 import HeroWorkflow from "./HeroWorkflow";
+import HeroAmbient from "./HeroAmbient";
 import { scrollToId } from "../lib/smooth-scroll";
 
 function Words({ text, className }: { text: string; className?: string }) {
