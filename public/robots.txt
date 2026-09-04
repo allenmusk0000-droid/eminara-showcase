@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://lookbook-lens-live.lovable.app/sitemap.xml
