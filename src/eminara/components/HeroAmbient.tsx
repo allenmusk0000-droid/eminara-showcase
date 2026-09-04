@@ -1,9 +1,9 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 const ORBS = [
-  { size: 560, x: "18%", y: "12%", color: "var(--color-accent)", opacity: 0.05, duration: 14, delay: 0 },
-  { size: 420, x: "72%", y: "28%", color: "var(--color-cream)", opacity: 0.03, duration: 18, delay: 2.5 },
-  { size: 320, x: "55%", y: "55%", color: "var(--color-accent)", opacity: 0.04, duration: 16, delay: 1.2 },
+  { size: 560, x: "18%", y: "12%", color: "var(--color-accent)", opacity: 0.09, duration: 14, delay: 0 },
+  { size: 420, x: "72%", y: "28%", color: "var(--color-cream)", opacity: 0.04, duration: 18, delay: 2.5 },
+  { size: 320, x: "55%", y: "55%", color: "var(--color-accent)", opacity: 0.07, duration: 16, delay: 1.2 },
 ];
 
 const PARTICLES = [
