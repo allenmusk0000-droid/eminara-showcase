@@ -34,6 +34,7 @@ export default function Hero() {
     <section id="top" className="relative overflow-hidden pt-32 pb-20 sm:pt-40 lg:pt-44">
       {/* backdrop */}
       <div className="pointer-events-none absolute inset-0 -z-10">
+        <HeroAmbient />
         <div
           className="absolute inset-0 opacity-[0.5]"
           style={{
