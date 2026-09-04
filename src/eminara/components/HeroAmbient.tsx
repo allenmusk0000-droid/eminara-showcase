@@ -67,7 +67,7 @@ export default function HeroAmbient() {
               ? {}
               : {
                   y: [0, -18, 0],
-                  opacity: [0.25, 0.55, 0.25],
+                  opacity: [0.35, 0.7, 0.35],
                 }
           }
           transition={{
