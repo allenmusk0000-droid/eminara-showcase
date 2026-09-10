@@ -3,13 +3,14 @@ import Reveal from "./ui/Reveal";
 
 const CASES = [
   {
-    industry: "Dental Clinic",
-    challenge: "Leads were lost because calls went unanswered after hours and on weekends.",
-    solution: "AI voice agent + website chatbot + automated follow-up.",
-    result: "Every inquiry now gets an instant answer and a booked consultation.",
-    metric: "2.4×",
-    metricLabel: "more booked consultations",
-    bar: 78,
+    industry: "Travel Agency — FaresMatch",
+    challenge: "Travelers visited the site but left without booking because search was slow and fare rules were unclear.",
+    solution: "AI flight search + fare comparison + transparent baggage/refund rules.",
+    result: "Visitors find the right flight faster and complete bookings with confidence.",
+    metric: "+52%",
+    metricLabel: "more search-to-book conversions",
+    bar: 82,
+    link: "https://faresmatch.com",
   },
   {
     industry: "B2B SaaS",
