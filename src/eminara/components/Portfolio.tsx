@@ -13,12 +13,25 @@ interface Project {
   accent: string;
   image: string;
   domain: string;
+  link?: string;
   tagline: string;
   services: string[];
   desc: string;
 }
 
 const PROJECTS: Project[] = [
+  {
+    id: "travel",
+    name: "FaresMatch",
+    industry: "Travel Agency",
+    accent: "#5BA3F5",
+    image: "https://images.pexels.com/photos/2166559/pexels-photo-2166559.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=700&w=1000",
+    domain: "faresmatch.com",
+    link: "https://faresmatch.com",
+    tagline: "Travel made simple",
+    services: ["Flight search", "AI chatbot", "Booking engine"],
+    desc: "A fast, intuitive travel platform where visitors compare fares and book trips with an AI assistant ready to help.",
+  },
   {
     id: "realestate",
     name: "Meridian Estates",
@@ -51,17 +64,6 @@ const PROJECTS: Project[] = [
     tagline: "Analytics that move you",
     services: ["Web app", "Marketing site", "AI chatbot"],
     desc: "A conversion-focused marketing site plus a product tour that turns trial users into customers.",
-  },
-  {
-    id: "ecom",
-    name: "Vessel Supply",
-    industry: "E-commerce",
-    accent: "#f07a5a",
-    image: "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=700&w=1000",
-    domain: "vesselsupply.co",
-    tagline: "Gear that lasts",
-    services: ["Store", "Payments", "AI follow-up"],
-    desc: "A fast storefront with Stripe payments, abandoned-cart follow-up and an AI sales assistant.",
   },
   {
     id: "services",
