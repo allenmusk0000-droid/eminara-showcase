@@ -79,6 +79,31 @@ const PROJECTS: Project[] = [
 ];
 
 function SiteMockup({ p }: { p: Project }) {
+  const preview = (
+    <>
+      <img src={p.image} alt={`${p.name} — ${p.industry} website`} className="h-full w-full object-cover" loading="lazy" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
+      {/* fake nav */}
+      <div className="absolute inset-x-0 top-0 flex items-center justify-between px-5 py-4">
+        <span className="font-display text-sm font-semibold text-white drop-shadow">{p.name}</span>
+        <div className="flex items-center gap-2">
+          {[0, 1, 2].map((i) => (
+            <span key={i} className="h-1.5 w-8 rounded bg-white/60" />
+          ))}
+          <span className="ml-1 rounded-full bg-white/90 px-2.5 py-0.5 text-[0.6rem] font-medium text-black">Book</span>
+        </div>
+      </div>
+      {/* headline */}
+      <div className="absolute inset-x-0 bottom-0 px-5 pb-5">
+        <span className="mb-2 inline-block rounded-full px-2 py-0.5 text-[0.55rem] font-medium uppercase tracking-wide text-black" style={{ background: p.accent }}>
+          {p.industry}
+        </span>
+        <h4 className="font-display text-2xl font-semibold leading-tight text-white sm:text-3xl">{p.tagline}</h4>
+        <div className="mt-2 h-1.5 w-24 rounded" style={{ background: p.accent }} />
+      </div>
+    </>
+  );
+
   return (
     <div className="overflow-hidden rounded-2xl border border-line bg-panel shadow-2xl shadow-black/50">
       {/* browser chrome */}
@@ -92,7 +117,6 @@ function SiteMockup({ p }: { p: Project }) {
             target="_blank"
             rel="noopener noreferrer"
             className="ml-3 flex flex-1 items-center gap-1.5 rounded-md bg-ink px-3 py-1 text-[0.65rem] text-muted transition-colors hover:text-cream"
-            onClick={(e) => e.stopPropagation()}
           >
             <span className="text-accent">🔒</span> {p.domain}
           </a>
@@ -101,31 +125,22 @@ function SiteMockup({ p }: { p: Project }) {
             <span className="text-accent">🔒</span> {p.domain}
           </div>
         )}
-        <span className="rounded-full border border-line px-2 py-0.5 text-[0.55rem] text-muted">sample</span>
+        <span className="rounded-full border border-line px-2 py-0.5 text-[0.55rem] text-muted">{p.link ? "live site" : "sample"}</span>
       </div>
       {/* site preview */}
-      <div className="relative aspect-[16/11] overflow-hidden bg-panel">
-        <img src={p.image} alt={`${p.name} — ${p.industry} website design concept`} className="h-full w-full object-cover" loading="lazy" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
-        {/* fake nav */}
-        <div className="absolute inset-x-0 top-0 flex items-center justify-between px-5 py-4">
-          <span className="font-display text-sm font-semibold text-white drop-shadow">{p.name}</span>
-          <div className="flex items-center gap-2">
-            {[0, 1, 2].map((i) => (
-              <span key={i} className="h-1.5 w-8 rounded bg-white/60" />
-            ))}
-            <span className="ml-1 rounded-full bg-white/90 px-2.5 py-0.5 text-[0.6rem] font-medium text-black">Book</span>
-          </div>
-        </div>
-        {/* headline */}
-        <div className="absolute inset-x-0 bottom-0 px-5 pb-5">
-          <span className="mb-2 inline-block rounded-full px-2 py-0.5 text-[0.55rem] font-medium uppercase tracking-wide text-black" style={{ background: p.accent }}>
-            {p.industry}
-          </span>
-          <h4 className="font-display text-2xl font-semibold leading-tight text-white sm:text-3xl">{p.tagline}</h4>
-          <div className="mt-2 h-1.5 w-24 rounded" style={{ background: p.accent }} />
-        </div>
-      </div>
+      {p.link ? (
+        <a
+          href={p.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative block aspect-[16/11] overflow-hidden bg-panel outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          aria-label={`Open ${p.name} live site`}
+        >
+          {preview}
+        </a>
+      ) : (
+        <div className="relative aspect-[16/11] overflow-hidden bg-panel">{preview}</div>
+      )}
     </div>
   );
 }
