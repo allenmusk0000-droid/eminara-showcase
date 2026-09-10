@@ -5,6 +5,7 @@ import Reveal from "./ui/Reveal";
 import MagneticButton from "./ui/MagneticButton";
 import { scrollToId } from "../lib/smooth-scroll";
 import { cn } from "../utils/cn";
+import faresmatchHero from "../../assets/faresmatch-hero.png.asset.json";
 
 interface Project {
   id: string;
@@ -25,7 +26,7 @@ const PROJECTS: Project[] = [
     name: "FaresMatch",
     industry: "Travel Agency",
     accent: "#5BA3F5",
-    image: "https://images.pexels.com/photos/2166559/pexels-photo-2166559.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=700&w=1000",
+    image: faresmatchHero.url,
     domain: "faresmatch.com",
     link: "https://faresmatch.com",
     tagline: "Book your flight on FaresMatch",
