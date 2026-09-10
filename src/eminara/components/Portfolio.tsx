@@ -5,6 +5,7 @@ import Reveal from "./ui/Reveal";
 import MagneticButton from "./ui/MagneticButton";
 import { scrollToId } from "../lib/smooth-scroll";
 import { cn } from "../utils/cn";
+import faresmatchHero from "../../assets/faresmatch-hero.png.asset.json";
 
 interface Project {
   id: string;
