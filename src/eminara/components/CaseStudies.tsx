@@ -79,7 +79,19 @@ export default function CaseStudies() {
                     <div className="h-1 overflow-hidden rounded bg-line">
                       <div className="h-full rounded bg-accent" style={{ width: `${c.bar}%` }} />
                     </div>
-                    <span className="mt-2 block text-[0.6rem] uppercase tracking-wide text-faint">Illustrative sample</span>
+                    <div className="mt-3 flex items-center justify-between">
+                      <span className="text-[0.6rem] uppercase tracking-wide text-faint">{c.link ? "Live project" : "Illustrative sample"}</span>
+                      {c.link && (
+                        <a
+                          href={c.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[0.7rem] font-medium text-accent transition-colors hover:text-cream"
+                        >
+                          Visit site →
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </article>
