@@ -28,9 +28,9 @@ const PROJECTS: Project[] = [
     image: "https://images.pexels.com/photos/2166559/pexels-photo-2166559.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=700&w=1000",
     domain: "faresmatch.com",
     link: "https://faresmatch.com",
-    tagline: "Travel made simple",
-    services: ["Flight search", "AI chatbot", "Booking engine"],
-    desc: "A fast, intuitive travel platform where visitors compare fares and book trips with an AI assistant ready to help.",
+    tagline: "Book your flight on FaresMatch",
+    services: ["Flight search engine", "AI fare comparison", "Booking automation"],
+    desc: "A live travel platform where visitors compare airfares, check baggage and refund rules, and book trips — with an AI assistant ready to help at every step.",
   },
   {
     id: "realestate",
