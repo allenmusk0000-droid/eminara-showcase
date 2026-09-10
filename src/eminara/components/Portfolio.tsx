@@ -86,9 +86,21 @@ function SiteMockup({ p }: { p: Project }) {
         <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-        <div className="ml-3 flex flex-1 items-center gap-1.5 rounded-md bg-ink px-3 py-1 text-[0.65rem] text-muted">
-          <span className="text-accent">🔒</span> {p.domain}
-        </div>
+        {p.link ? (
+          <a
+            href={p.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-3 flex flex-1 items-center gap-1.5 rounded-md bg-ink px-3 py-1 text-[0.65rem] text-muted transition-colors hover:text-cream"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span className="text-accent">🔒</span> {p.domain}
+          </a>
+        ) : (
+          <div className="ml-3 flex flex-1 items-center gap-1.5 rounded-md bg-ink px-3 py-1 text-[0.65rem] text-muted">
+            <span className="text-accent">🔒</span> {p.domain}
+          </div>
+        )}
         <span className="rounded-full border border-line px-2 py-0.5 text-[0.55rem] text-muted">sample</span>
       </div>
       {/* site preview */}
