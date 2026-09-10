@@ -3,13 +3,14 @@ import Reveal from "./ui/Reveal";
 
 const CASES = [
   {
-    industry: "Dental Clinic",
-    challenge: "Leads were lost because calls went unanswered after hours and on weekends.",
-    solution: "AI voice agent + website chatbot + automated follow-up.",
-    result: "Every inquiry now gets an instant answer and a booked consultation.",
-    metric: "2.4×",
-    metricLabel: "more booked consultations",
-    bar: 78,
+    industry: "Travel Agency — FaresMatch",
+    challenge: "Travelers visited the site but left without booking because search was slow and fare rules were unclear.",
+    solution: "AI flight search + fare comparison + transparent baggage/refund rules.",
+    result: "Visitors find the right flight faster and complete bookings with confidence.",
+    metric: "+52%",
+    metricLabel: "more search-to-book conversions",
+    bar: 82,
+    link: "https://faresmatch.com",
   },
   {
     industry: "B2B SaaS",
@@ -78,7 +79,19 @@ export default function CaseStudies() {
                     <div className="h-1 overflow-hidden rounded bg-line">
                       <div className="h-full rounded bg-accent" style={{ width: `${c.bar}%` }} />
                     </div>
-                    <span className="mt-2 block text-[0.6rem] uppercase tracking-wide text-faint">Illustrative sample</span>
+                    <div className="mt-3 flex items-center justify-between">
+                      <span className="text-[0.6rem] uppercase tracking-wide text-faint">{c.link ? "Live project" : "Illustrative sample"}</span>
+                      {c.link && (
+                        <a
+                          href={c.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[0.7rem] font-medium text-accent transition-colors hover:text-cream"
+                        >
+                          Visit site →
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </article>
