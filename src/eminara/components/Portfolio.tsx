@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionHeading from "./ui/SectionHeading";
 import Reveal from "./ui/Reveal";
@@ -15,6 +16,7 @@ interface Project {
   image: string;
   domain: string;
   link?: string;
+  to?: "/faresmatch";
   tagline: string;
   services: string[];
   desc: string;
@@ -29,6 +31,7 @@ const PROJECTS: Project[] = [
     image: faresmatchHero.url,
     domain: "faresmatch.com",
     link: "https://faresmatch.com",
+    to: "/faresmatch",
     tagline: "Book your flight on FaresMatch",
     services: ["Flight search engine", "AI fare comparison", "Booking automation"],
     desc: "A live travel platform where visitors compare airfares, check baggage and refund rules, and book trips — with an AI assistant ready to help at every step.",
@@ -129,7 +132,15 @@ function SiteMockup({ p }: { p: Project }) {
         <span className="rounded-full border border-line px-2 py-0.5 text-[0.55rem] text-muted">{p.link ? "live site" : "sample"}</span>
       </div>
       {/* site preview */}
-      {p.link ? (
+      {p.to ? (
+        <Link
+          to={p.to}
+          className="relative block aspect-[16/11] overflow-hidden bg-panel outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          aria-label={`Open the ${p.name} booking experience`}
+        >
+          {preview}
+        </Link>
+      ) : p.link ? (
         <a
           href={p.link}
           target="_blank"
@@ -220,8 +231,18 @@ export default function Portfolio() {
                   <SiteMockup p={p} />
                   <div className="mt-4 flex items-start justify-between gap-4 rounded-2xl border border-line bg-panel px-5 py-4">
                     <p className="text-sm leading-relaxed text-cream-dim">{p.desc}</p>
-                    <span className="shrink-0 rounded-full border border-dashed border-line px-3 py-1 text-[0.6rem] uppercase tracking-wide text-faint">Concept</span>
+                    <span className="shrink-0 rounded-full border border-dashed border-line px-3 py-1 text-[0.6rem] uppercase tracking-wide text-faint">
+                      {p.to ? "Live demo" : "Concept"}
+                    </span>
                   </div>
+                  {p.to && (
+                    <Link
+                      to={p.to}
+                      className="mt-3 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+                    >
+                      Search flights &amp; book →
+                    </Link>
+                  )}
                 </motion.div>
               </AnimatePresence>
             </div>
