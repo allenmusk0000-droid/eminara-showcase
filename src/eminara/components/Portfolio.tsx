@@ -31,6 +31,7 @@ const PROJECTS: Project[] = [
     image: faresmatchHero.url,
     domain: "faresmatch.com",
     link: "https://faresmatch.com",
+    to: "/faresmatch",
     tagline: "Book your flight on FaresMatch",
     services: ["Flight search engine", "AI fare comparison", "Booking automation"],
     desc: "A live travel platform where visitors compare airfares, check baggage and refund rules, and book trips — with an AI assistant ready to help at every step.",
