@@ -16,7 +16,7 @@ interface Project {
   image: string;
   domain: string;
   link?: string;
-  to?: string;
+  to?: "/faresmatch";
   tagline: string;
   services: string[];
   desc: string;
