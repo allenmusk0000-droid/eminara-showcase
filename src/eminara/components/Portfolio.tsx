@@ -16,6 +16,7 @@ interface Project {
   image: string;
   domain: string;
   link?: string;
+  to?: string;
   tagline: string;
   services: string[];
   desc: string;
