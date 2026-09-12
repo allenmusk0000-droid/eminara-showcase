@@ -132,7 +132,15 @@ function SiteMockup({ p }: { p: Project }) {
         <span className="rounded-full border border-line px-2 py-0.5 text-[0.55rem] text-muted">{p.link ? "live site" : "sample"}</span>
       </div>
       {/* site preview */}
-      {p.link ? (
+      {p.to ? (
+        <Link
+          to={p.to}
+          className="relative block aspect-[16/11] overflow-hidden bg-panel outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          aria-label={`Open the ${p.name} booking experience`}
+        >
+          {preview}
+        </Link>
+      ) : p.link ? (
         <a
           href={p.link}
           target="_blank"
