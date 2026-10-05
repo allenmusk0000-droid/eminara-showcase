@@ -75,9 +75,9 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="mt-7 max-w-xl text-balance text-base leading-relaxed text-cream-dim sm:text-xl"
           >
-            From AI employees and intelligent automation to high-converting websites and
-            AI-powered advertising — we build the digital systems that help businesses
-            attract, convert, and serve customers better.
+            We build AI-powered business systems that automate repetitive work, streamline
+            operations, and connect your workflows — from lead management and customer
+            communication to intelligent voice agents and automated follow-ups.
           </motion.p>
 
           <motion.div
