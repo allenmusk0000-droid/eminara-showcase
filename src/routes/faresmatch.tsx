@@ -195,6 +195,11 @@ const field =
   "w-full rounded-xl border border-line bg-panel px-4 py-3 text-sm text-cream outline-none transition-colors placeholder:text-faint focus:border-accent";
 const label = "mb-1.5 block text-[0.7rem] font-medium uppercase tracking-[0.16em] text-muted";
 
+function mins(d: string) {
+  const m = d.match(/(\d+)h\s*(\d+)m/);
+  return m ? Number(m[1]) * 60 + Number(m[2]) : 0;
+}
+
 function todayPlus(days: number) {
   const d = new Date();
   d.setDate(d.getDate() + days);
@@ -223,7 +228,7 @@ function FaresMatchPage() {
       return matchO && matchD;
     });
     list = [...list].sort((a, b) =>
-      sort === "price" ? a.price - b.price : a.duration.localeCompare(b.duration)
+      sort === "price" ? a.price - b.price : mins(a.duration) - mins(b.duration)
     );
     return list;
   }, [origin, destination, sort]);
